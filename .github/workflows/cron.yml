@@ -1,0 +1,27 @@
+name: production-release
+on:
+  schedule:
+    - cron : '5 * * * *'
+
+jobs:
+  pr-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo's default branch
+        uses: actions/checkout@v3
+
+      - name: search
+        id: search
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PULL_REQUEST_NUMBER=$(gh search prs -B main --repo d8y/github-actions-release-test --state open --review approved --json number --jq '.[].number')
+          echo "PULL_REQUEST_NUMBER=$PULL_REQUEST_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: merge
+        id: merge
+        if: steps.search.outputs.PULL_REQUEST_NUMBER
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ steps.search.outputs.PULL_REQUEST_NUMBER }} -m
