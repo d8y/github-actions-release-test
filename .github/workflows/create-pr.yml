@@ -9,6 +9,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: develop
 
       - name: Create a release PR
         uses: bakunyo/git-pr-release-action@master

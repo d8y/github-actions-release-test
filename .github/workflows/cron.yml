@@ -1,9 +1,10 @@
 name: production-release
 on:
   workflow_dispatch:
-#  push:
   schedule:
     - cron : '5 * * * *'
+  branches:
+    - main
 
 jobs:
   pr-merge:
