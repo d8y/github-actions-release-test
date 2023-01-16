@@ -1,6 +1,5 @@
 name: production-release
 on:
-  workflow_dispatch:
   schedule:
     - cron : '5 * * * *'
 
