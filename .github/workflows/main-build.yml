@@ -8,8 +8,6 @@ on:
       - closed
   workflow_dispatch:
   workflow_call:
-    branches:
-      - main
     inputs:
       pull_request_number:
         description: 'pull request number'
@@ -33,5 +31,8 @@ jobs:
       contents: read
 
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
       - run: echo 'release main'
       - run: echo ${{ env.pull_request_number }}
