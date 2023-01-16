@@ -34,4 +34,4 @@ jobs:
     needs: pr-merge
     if: needs.pr-merge.outputs.pull_request_number != ''
     with:
-      pull_request_number: ${{ needs.pr-merge.outputs.PULL_REQUEST_NUMBER }}
+      pull_request_number: ${{ needs.pr-merge.outputs.pull_request_number }}
