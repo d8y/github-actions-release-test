@@ -29,6 +29,6 @@ jobs:
           gh pr merge ${{ steps.search.outputs.PULL_REQUEST_NUMBER }} -m
 
       - name: call-workflow
-        uses: .github/workflows/main-build.yml
+        uses: d8y/github-actions-release-test/.github/workflows/main-build.yml@main
         with:
           pull_request_number: ${{ steps.search.outputs.PULL_REQUEST_NUMBER }}
