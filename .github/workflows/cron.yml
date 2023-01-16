@@ -31,4 +31,4 @@ jobs:
     name: call-main
     uses: ./.github/workflows/main-build.yml
     with:
-      pull_request_number: ${{ steps.search.outputs.PULL_REQUEST_NUMBER }}
+      pull_request_number: ${{ steps.pr-merge.outputs.PULL_REQUEST_NUMBER }}
