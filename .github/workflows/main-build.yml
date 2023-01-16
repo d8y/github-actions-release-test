@@ -7,6 +7,14 @@ on:
     types:
       - closed
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      pull_request_number:
+        required: true
+        type: number
+
+env:
+  pull_request_number: ${{ github.event.pull_request.number }} || ${{ inputs.pull_request_number }}
 
 jobs:
   release:
@@ -19,3 +27,4 @@ jobs:
 
     steps:
       - run: echo 'release main'
+      - run: echo ${{ env.pull_request_number }}
