@@ -29,9 +29,7 @@ jobs:
           gh pr merge ${{ steps.search.outputs.PULL_REQUEST_NUMBER }} -m
 
   call-main-build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: call-main
-        uses: d8y/github-actions-release-test/.github/workflows/main-build.yml@main
-        with:
-          pull_request_number: ${{ steps.search.outputs.PULL_REQUEST_NUMBER }}
+    name: call-main
+    uses: REPO/.github/workflows/main-build.yml@main
+    with:
+      pull_request_number: ${{ steps.search.outputs.PULL_REQUEST_NUMBER }}
