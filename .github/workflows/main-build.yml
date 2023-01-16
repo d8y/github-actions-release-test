@@ -14,7 +14,7 @@ on:
         type: number
 
 env:
-  pull_request_number: ${{ github.event.pull_request.number }} || ${{ inputs.pull_request_number }}
+  pull_request_number: ${{ github.event.pull_request.number || inputs.pull_request_number }}
 
 jobs:
   release:
