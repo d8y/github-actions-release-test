@@ -1,6 +1,7 @@
 name: production-release
 on:
-  push:
+  workflow_dispatch:
+#  push:
 #  schedule:
 #    - cron : '5 * * * *'
 
@@ -26,3 +27,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr merge ${{ steps.search.outputs.PULL_REQUEST_NUMBER }} -m
+
+      - name: call-workflow
+        uses: d8y/github-actions-release-test/.github/workflows/main-build.yml
+        with:
+          pull_request_number: ${{ steps.search.outputs.PULL_REQUEST_NUMBER }}
