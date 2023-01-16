@@ -30,6 +30,6 @@ jobs:
 
   call-main-build:
     name: call-main
-    uses: ./.github/workflows/main-build.yml@main
+    uses: ./.github/workflows/main-build.yml
     with:
       pull_request_number: ${{ steps.search.outputs.PULL_REQUEST_NUMBER }}
