@@ -33,5 +33,6 @@ jobs:
     name: call-main
     uses: ./.github/workflows/main-build.yml
     needs: pr-merge
+    if: needs.job.pr-merge.outputs.PULL_REQUEST_NUMBER
     with:
       pull_request_number: ${{ needs.job.pr-merge.outputs.PULL_REQUEST_NUMBER }}
