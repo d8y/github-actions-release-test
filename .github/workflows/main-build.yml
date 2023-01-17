@@ -30,3 +30,4 @@ jobs:
           ref: main
       - run: echo 'release main'
       - run: echo ${{ env.pull_request_number }}
+      - run: echo ${{ toJson(github) }}
