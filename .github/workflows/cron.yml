@@ -28,6 +28,12 @@ jobs:
         run: |
           gh pr merge ${{ steps.search.outputs.PULL_REQUEST_NUMBER }} -m
 
+  echo:
+    runs-on: ubuntu-latest
+    needs: pr-merge
+    steps:
+      - run: echo ${{ needs.pr-merge.outputs.pull_request_number }}
+
   call-main-build:
     name: call-main
     uses: ./.github/workflows/main-build.yml
