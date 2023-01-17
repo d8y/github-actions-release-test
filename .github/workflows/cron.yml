@@ -33,7 +33,7 @@ jobs:
     needs: pr-merge
     steps:
       - run: echo ${{ needs.pr-merge.outputs.pull_request_number }}
-      - run: echo ${{ toJson(github) }}
+      - run: echo '${{ toJson(github) }}'
 
   call-main-build:
     name: call-main
