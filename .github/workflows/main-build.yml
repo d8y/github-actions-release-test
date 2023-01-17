@@ -20,7 +20,6 @@ jobs:
   release:
     name: release2
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     permissions:
       id-token: write
       contents: read
